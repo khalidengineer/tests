@@ -141,9 +141,89 @@ Sub BuildIssueDashboard()
     ' Update KPI text values
     Call UpdateKPIText(wsDash)
 
-    MsgBox "Issue Tracking Dashboard built successfully!" & vbCrLf & _
-           "Total Issues Loaded: " & (lastRow - 1), vbInformation, "Dashboard Ready"
+    ' STEP 10: Inject auto-update event into Dashboard sheet
+    ' (Slicer change -> Pivot updates -> KPI text auto-refreshes)
+    Call InjectDashboardEvent(wb)
 
+    MsgBox "Issue Tracking Dashboard built successfully!" & vbCrLf & _
+           "Total Issues Loaded: " & (lastRow - 1) & vbCrLf & vbCrLf & _
+           "Slicers ke saath KPI auto-update honge!", vbInformation, "Dashboard Ready"
+
+End Sub
+
+' ============================================================================
+' INJECT EVENT HANDLERS - Auto-updates KPI when slicer/filter changes
+' ============================================================================
+Private Sub InjectDashboardEvent(wb As Workbook)
+    On Error Resume Next
+
+    Dim cm As Object
+    Dim vbc As Object
+    For Each vbc In wb.VBProject.VBComponents
+        If vbc.Properties("Name") = "Dashboard" Then
+            Set cm = vbc.CodeModule
+            Exit For
+        End If
+    Next vbc
+
+    If cm Is Nothing Then
+        On Error GoTo 0
+        Exit Sub
+    End If
+
+    ' Remove existing event handlers (avoid duplicates)
+    Dim i As Long
+    Dim startLine As Long, endLine As Long
+    For i = cm.CountOfLines To 1 Step -1
+        Dim lineText As String
+        lineText = cm.Lines(i, 1)
+        If InStr(lineText, "Worksheet_Calculate") > 0 Or _
+           InStr(lineText, "Worksheet_PivotTableUpdate") > 0 Then
+            startLine = i
+            endLine = i
+            Do While endLine < cm.CountOfLines
+                endLine = endLine + 1
+                If InStr(cm.Lines(endLine, 1), "End Sub") > 0 Then Exit Do
+            Loop
+            cm.DeleteLines startLine, endLine - startLine + 1
+        End If
+    Next i
+
+    ' Inject Worksheet_PivotTableUpdate event
+    Dim pvtEvent As String
+    pvtEvent = "Private Sub Worksheet_PivotTableUpdate(ByVal Target As PivotTable)" & vbCrLf & _
+               "    On Error Resume Next" & vbCrLf & _
+               "    Application.OnTime Now, ""IssueDashboardModule.RefreshDashboard""" & vbCrLf & _
+               "    On Error GoTo 0" & vbCrLf & _
+               "End Sub"
+
+    ' Inject Worksheet_Calculate event as backup
+    Dim calcEvent As String
+    calcEvent = "Private Sub Worksheet_Calculate()" & vbCrLf & _
+                "    On Error Resume Next" & vbCrLf & _
+                "    Application.EnableEvents = False" & vbCrLf & _
+                "    Call IssueDashboardModule.UpdateKPITextDirect" & vbCrLf & _
+                "    Application.EnableEvents = True" & vbCrLf & _
+                "    On Error GoTo 0" & vbCrLf & _
+                "End Sub"
+
+    cm.InsertLines cm.CountOfLines + 1, pvtEvent
+    cm.InsertLines cm.CountOfLines + 1, calcEvent
+
+    On Error GoTo 0
+End Sub
+
+' ============================================================================
+' DIRECT KPI TEXT UPDATE - Called from event handlers
+' ============================================================================
+Public Sub UpdateKPITextDirect()
+    On Error Resume Next
+    Dim wsDash As Worksheet
+    Set wsDash = ThisWorkbook.Sheets("Dashboard")
+    If Not wsDash Is Nothing Then
+        Call UpdateKPIText(wsDash)
+    End If
+    On Error GoTo 0
 End Sub
 
 ' ============================================================================
@@ -185,34 +265,43 @@ Private Sub CreateHeaderBanner(wsDash As Worksheet)
 End Sub
 
 ' ============================================================================
-' SETUP KPI FORMULAS IN HIDDEN CELLS (FIX for DrawingObject error)
+' SETUP KPI FORMULAS - USES GETPIVOTDATA SO SLICERS WORK!
+' ============================================================================
+' KPIs read from pivot tables which are connected to slicers
+' This way when slicer changes, KPI values change too
 ' ============================================================================
 Private Sub SetupKPIFormulas(wsDash As Worksheet, wsData As Worksheet)
 
     Const KPI_ROW As Long = 200
     
-    ' Total Issues
-    wsDash.Cells(KPI_ROW, 1).Formula = "=COUNTA(Data!A2:A10000)"
+    ' Total Issues = Grand Total of pvtStatus pivot (respects slicers)
+    wsDash.Cells(KPI_ROW, 1).Formula = _
+        "=IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35),0)"
     
-    ' Open/Pending Issues
+    ' Open Issues = Sum of Open + In Progress + Pending from pvtStatus
     wsDash.Cells(KPI_ROW, 2).Formula = _
-        "=COUNTIF(Data!C2:C10000,""Open"")+COUNTIF(Data!C2:C10000,""Pending"")+COUNTIF(Data!C2:C10000,""In Progress"")"
+        "=IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""Open""),0)" & _
+        "+IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""In Progress""),0)" & _
+        "+IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""Pending""),0)"
     
-    ' Resolved Issues
+    ' Resolved Issues = Sum of Resolved + Closed + Completed from pvtStatus
     wsDash.Cells(KPI_ROW, 3).Formula = _
-        "=COUNTIF(Data!C2:C10000,""Resolved"")+COUNTIF(Data!C2:C10000,""Closed"")+COUNTIF(Data!C2:C10000,""Completed"")"
+        "=IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""Resolved""),0)" & _
+        "+IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""Closed""),0)" & _
+        "+IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""Completed""),0)"
     
-    ' Critical/High Severity Issues
+    ' Critical/High Severity = from pvtSeverity pivot (respects slicers)
     wsDash.Cells(KPI_ROW, 4).Formula = _
-        "=COUNTIF(Data!B2:B10000,""Critical"")+COUNTIF(Data!B2:B10000,""High"")"
+        "=IFERROR(GETPIVOTDATA(""Count by Severity"",Pivot!A20,""Severity"",""Critical""),0)" & _
+        "+IFERROR(GETPIVOTDATA(""Count by Severity"",Pivot!A20,""Severity"",""High""),0)"
     
     ' Resolution Rate %
     wsDash.Cells(KPI_ROW, 5).Formula = _
-        "=IFERROR((" & wsDash.Cells(KPI_ROW, 3).Address & "/" & wsDash.Cells(KPI_ROW, 1).Address & "),0)"
+        "=IFERROR(" & wsDash.Cells(KPI_ROW, 3).Address & "/" & wsDash.Cells(KPI_ROW, 1).Address & ",0)"
     
-    ' Unique Reporters
+    ' Department Count = Number of departments in filtered pvtDepartment
     wsDash.Cells(KPI_ROW, 6).Formula = _
-        "=SUMPRODUCT((Data!I2:I10000<>"""")/COUNTIF(Data!I2:I10000,Data!I2:I10000&""""))"
+        "=IFERROR(GETPIVOTDATA(""Issues by Department"",Pivot!F2),0)"
     
     ' Hide the row
     wsDash.Rows(KPI_ROW).Hidden = True
@@ -231,7 +320,7 @@ Private Sub CreateKPICards(wsDash As Worksheet)
     kpiTitles(2) = "Resolved"
     kpiTitles(3) = "Critical/High"
     kpiTitles(4) = "Resolution %"
-    kpiTitles(5) = "Total Reporters"
+    kpiTitles(5) = "Departments"
 
     Dim accentColors(5) As Long
     accentColors(0) = RGB(37, 99, 235)
@@ -350,8 +439,13 @@ Public Sub UpdateKPIText(wsDash As Worksheet)
     Dim cellValue As Variant
     Dim displayText As String
     
+    ' Force cell recalculation first
+    wsDash.Range(wsDash.Cells(KPI_ROW, 1), wsDash.Cells(KPI_ROW, 6)).Calculate
+    
     For k = 0 To 5
         cellValue = wsDash.Cells(KPI_ROW, k + 1).Value
+        
+        If IsError(cellValue) Or IsEmpty(cellValue) Then cellValue = 0
         
         ' Format based on KPI type
         Select Case k
@@ -909,7 +1003,8 @@ Private Sub CreateSlicers(wb As Workbook, wsDash As Worksheet, wsPivot As Worksh
 End Sub
 
 ' ============================================================================
-' REFRESH KPI - Manual refresh button function
+' REFRESH DASHBOARD - Manual refresh button function
+' Works with slicer events to refresh KPI text
 ' ============================================================================
 Public Sub RefreshDashboard()
     On Error Resume Next
@@ -917,8 +1012,10 @@ Public Sub RefreshDashboard()
     Set wsDash = ThisWorkbook.Sheets("Dashboard")
     
     If Not wsDash Is Nothing Then
+        Application.EnableEvents = False
         wsDash.Calculate
         Call UpdateKPIText(wsDash)
+        Application.EnableEvents = True
     End If
     On Error GoTo 0
 End Sub
