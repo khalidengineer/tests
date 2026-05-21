@@ -1,0 +1,51 @@
+Ticket ID,Date,Status,Priority,Category,Assigned Agent,Resolution Time (Hours),Source,SLA Status,Satisfaction Rating
+TKT-001,01-01-2024,Closed,High,Technical,John Smith,24,Email,Met,5
+TKT-002,01-01-2024,Resolved,Medium,Billing,Sarah Johnson,12,Phone,Met,4
+TKT-003,02-01-2024,Open,Critical,Technical,Mike Davis,0,Chat,Breached,0
+TKT-004,02-01-2024,Closed,Low,Account,Emily Brown,48,Portal,Met,5
+TKT-005,03-01-2024,In Progress,High,Support,John Smith,18,Email,Met,0
+TKT-006,03-01-2024,Resolved,Medium,Technical,Sarah Johnson,36,Phone,Met,4
+TKT-007,04-01-2024,Closed,Critical,Billing,Mike Davis,6,Chat,Met,5
+TKT-008,04-01-2024,Open,High,Account,Emily Brown,0,Email,Breached,0
+TKT-009,05-01-2024,Resolved,Low,Support,John Smith,72,Portal,Breached,3
+TKT-010,05-01-2024,Closed,Medium,Technical,Sarah Johnson,24,Phone,Met,4
+TKT-011,06-01-2024,In Progress,High,Billing,Mike Davis,12,Email,Met,0
+TKT-012,06-01-2024,Resolved,Critical,Account,Emily Brown,8,Chat,Met,5
+TKT-013,07-01-2024,Closed,Medium,Support,John Smith,30,Portal,Met,4
+TKT-014,07-01-2024,Open,Low,Technical,Sarah Johnson,0,Email,Met,0
+TKT-015,08-01-2024,Resolved,High,Billing,Mike Davis,16,Phone,Met,5
+TKT-016,08-01-2024,Closed,Critical,Account,Emily Brown,10,Chat,Met,5
+TKT-017,09-01-2024,In Progress,Medium,Support,John Smith,20,Email,Met,0
+TKT-018,09-01-2024,Resolved,Low,Technical,Sarah Johnson,48,Portal,Breached,3
+TKT-019,10-01-2024,Closed,High,Billing,Mike Davis,22,Phone,Met,4
+TKT-020,10-01-2024,Open,Critical,Account,Emily Brown,0,Chat,Breached,0
+TKT-021,11-01-2024,Resolved,Medium,Support,John Smith,28,Email,Met,4
+TKT-022,11-01-2024,Closed,Low,Technical,Sarah Johnson,60,Portal,Breached,3
+TKT-023,12-01-2024,In Progress,High,Billing,Mike Davis,14,Phone,Met,0
+TKT-024,12-01-2024,Resolved,Critical,Account,Emily Brown,7,Chat,Met,5
+TKT-025,13-01-2024,Closed,Medium,Support,John Smith,32,Email,Met,4
+TKT-026,13-01-2024,Open,Low,Technical,Sarah Johnson,0,Portal,Met,0
+TKT-027,14-01-2024,Resolved,High,Billing,Mike Davis,18,Phone,Met,5
+TKT-028,14-01-2024,Closed,Critical,Account,Emily Brown,9,Chat,Met,5
+TKT-029,15-01-2024,In Progress,Medium,Support,John Smith,25,Email,Met,0
+TKT-030,15-01-2024,Resolved,Low,Technical,Sarah Johnson,55,Portal,Breached,3
+TKT-031,16-01-2024,Closed,High,Billing,Mike Davis,20,Phone,Met,4
+TKT-032,16-01-2024,Open,Critical,Account,Emily Brown,0,Chat,Breached,0
+TKT-033,17-01-2024,Resolved,Medium,Support,John Smith,26,Email,Met,4
+TKT-034,17-01-2024,Closed,Low,Technical,Sarah Johnson,50,Portal,Met,4
+TKT-035,18-01-2024,In Progress,High,Billing,Mike Davis,15,Phone,Met,0
+TKT-036,18-01-2024,Resolved,Critical,Account,Emily Brown,8,Chat,Met,5
+TKT-037,19-01-2024,Closed,Medium,Support,John Smith,30,Email,Met,4
+TKT-038,19-01-2024,Open,Low,Technical,Sarah Johnson,0,Portal,Met,0
+TKT-039,20-01-2024,Resolved,High,Billing,Mike Davis,17,Phone,Met,5
+TKT-040,20-01-2024,Closed,Critical,Account,Emily Brown,11,Chat,Met,5
+TKT-041,21-01-2024,In Progress,Medium,Support,John Smith,22,Email,Met,0
+TKT-042,21-01-2024,Resolved,Low,Technical,Sarah Johnson,52,Portal,Breached,3
+TKT-043,22-01-2024,Closed,High,Billing,Mike Davis,19,Phone,Met,4
+TKT-044,22-01-2024,Open,Critical,Account,Emily Brown,0,Chat,Breached,0
+TKT-045,23-01-2024,Resolved,Medium,Support,John Smith,27,Email,Met,4
+TKT-046,23-01-2024,Closed,Low,Technical,Sarah Johnson,58,Portal,Breached,3
+TKT-047,24-01-2024,In Progress,High,Billing,Mike Davis,13,Phone,Met,0
+TKT-048,24-01-2024,Resolved,Critical,Account,Emily Brown,9,Chat,Met,5
+TKT-049,25-01-2024,Closed,Medium,Support,John Smith,31,Email,Met,4
+TKT-050,25-01-2024,Open,Low,Technical,Sarah Johnson,0,Portal,Met,0
