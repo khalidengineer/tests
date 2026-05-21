@@ -2,19 +2,24 @@ Attribute VB_Name = "IssueDashboardModule"
 Option Explicit
 
 ' ============================================================================
-' ISSUE TRACKING ANALYTICS DASHBOARD - COMPLETE VBA MODULE
+' ISSUE TRACKING ANALYTICS DASHBOARD - COMPLETE VBA MODULE (Apps.csv Based)
 ' ============================================================================
-' Data Sheet Columns Required (24 columns):
-' Issue Type | Severity | Current Status | Issue Location | Issue Description |
-' Resolver | Resolver Identifier | Reporter | Reporter Identifier |
-' Reporter Designation | Reporter Department | Reporter Division |
-' Reporter Sub Division | Reporter Location | Resolver Designation |
-' Resolver Department | Resolver Division | Resolver Sub Division |
-' Resolver Location | Resolved At | Resolved Remarks | Reported At |
-' Issue ID | Issue Title
+' Data Sheet Columns Required (24 columns) - EXACT order from Apps.csv:
+' 1. Reporter | 2. Reporter Identifier | 3. Reporter Designation |
+' 4. Report Department | 5. Reporter Division | 6. Reporter Sub Division |
+' 7. Reporter Location | 8. Reported At | 9. Issue ID | 10. Issue Title |
+' 11. Issue Type | 12. Severity | 13. Current Status | 14. Issue Location |
+' 15. Issue Description | 16. Resolver | 17. Resolver Identifier |
+' 18. Resolver Designation | 19. Resolver Department | 20. Resolver Division |
+' 21. Resolver Sub Division | 22. Resolver Location | 23. Resolved At |
+' 24. Resolved Remarks
 ' ============================================================================
-' FIX APPLIED: .DrawingObject.Formula error fixed by using hidden cells
-' and Worksheet_Calculate event for KPI updates
+' Status Values: "open" (lowercase), "Closed"
+' Severity Values: "Critical", "High", "Medium", "Low", "" (blank)
+' Issue Types: "IT", "Marketing", "Repair and Maintenance"
+' ============================================================================
+' FIX 1: .DrawingObject.Formula error - using hidden cells + UpdateKPIText
+' FIX 2: KPI auto-update on slicer change - GETPIVOTDATA + Pivot events
 ' ============================================================================
 
 Sub BuildIssueDashboard()
@@ -253,7 +258,7 @@ Private Sub CreateHeaderBanner(wsDash As Worksheet)
         .MarginRight = 0
         .MarginTop = 0
         .MarginBottom = 0
-        .Characters.Text = "Issue Tracking Analytics Dashboard"
+        .Characters.Text = "Issue Tracking & Analytics Dashboard"
         .Characters.Font.Bold = True
         .Characters.Font.Color = RGB(255, 255, 255)
         .Characters.Font.Size = 32
@@ -278,19 +283,20 @@ Private Sub SetupKPIFormulas(wsDash As Worksheet, wsData As Worksheet)
     wsDash.Cells(KPI_ROW, 1).Formula = _
         "=IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35),0)"
     
-    ' Open Issues = Sum of Open + In Progress + Pending from pvtStatus
+    ' Open Issues - Apps.csv has "open" (lowercase)
     wsDash.Cells(KPI_ROW, 2).Formula = _
-        "=IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""Open""),0)" & _
+        "=IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""open""),0)" & _
+        "+IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""Open""),0)" & _
         "+IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""In Progress""),0)" & _
         "+IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""Pending""),0)"
     
-    ' Resolved Issues = Sum of Resolved + Closed + Completed from pvtStatus
+    ' Closed/Resolved Issues
     wsDash.Cells(KPI_ROW, 3).Formula = _
-        "=IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""Resolved""),0)" & _
-        "+IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""Closed""),0)" & _
+        "=IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""Closed""),0)" & _
+        "+IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""Resolved""),0)" & _
         "+IFERROR(GETPIVOTDATA(""Count by Status"",Pivot!A35,""Current Status"",""Completed""),0)"
     
-    ' Critical/High Severity = from pvtSeverity pivot (respects slicers)
+    ' Critical/High Severity = from pvtSeverity pivot
     wsDash.Cells(KPI_ROW, 4).Formula = _
         "=IFERROR(GETPIVOTDATA(""Count by Severity"",Pivot!A20,""Severity"",""Critical""),0)" & _
         "+IFERROR(GETPIVOTDATA(""Count by Severity"",Pivot!A20,""Severity"",""High""),0)"
@@ -299,7 +305,7 @@ Private Sub SetupKPIFormulas(wsDash As Worksheet, wsData As Worksheet)
     wsDash.Cells(KPI_ROW, 5).Formula = _
         "=IFERROR(" & wsDash.Cells(KPI_ROW, 3).Address & "/" & wsDash.Cells(KPI_ROW, 1).Address & ",0)"
     
-    ' Department Count = Number of departments in filtered pvtDepartment
+    ' Department Count = Sum of all departments in pvtDepartment
     wsDash.Cells(KPI_ROW, 6).Formula = _
         "=IFERROR(GETPIVOTDATA(""Issues by Department"",Pivot!F2),0)"
     
@@ -317,9 +323,9 @@ Private Sub CreateKPICards(wsDash As Worksheet)
     Dim kpiTitles(5) As String
     kpiTitles(0) = "Total Issues"
     kpiTitles(1) = "Open Issues"
-    kpiTitles(2) = "Resolved"
+    kpiTitles(2) = "Closed Issues"
     kpiTitles(3) = "Critical/High"
-    kpiTitles(4) = "Resolution %"
+    kpiTitles(4) = "Closure %"
     kpiTitles(5) = "Departments"
 
     Dim accentColors(5) As Long
@@ -556,8 +562,9 @@ Private Sub CreatePivot_Department(pc As PivotCache, ws As Worksheet)
     If pt Is Nothing Then Exit Sub
 
     With pt
-        .PivotFields("Reporter Department").Orientation = xlRowField
-        .PivotFields("Reporter Department").Position = 1
+        ' NOTE: Apps.csv uses "Report Department" (NOT "Reporter Department")
+        .PivotFields("Report Department").Orientation = xlRowField
+        .PivotFields("Report Department").Position = 1
 
         With .PivotFields("Issue ID")
             .Orientation = xlDataField
@@ -911,12 +918,12 @@ Private Sub CreateSlicers(wb As Workbook, wsDash As Worksheet, wsPivot As Worksh
         .ZOrder msoSendToBack
     End With
 
-    ' Slicer fields
+    ' Slicer fields - using EXACT column names from Apps.csv
     Dim slicerFields(3) As String
     slicerFields(0) = "Issue Type"
     slicerFields(1) = "Severity"
     slicerFields(2) = "Current Status"
-    slicerFields(3) = "Reporter Department"
+    slicerFields(3) = "Report Department"
 
     Dim slicerNames(3) As String
     slicerNames(0) = "slcIssueType"
