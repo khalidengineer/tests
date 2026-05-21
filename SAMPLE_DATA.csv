@@ -1,51 +1,51 @@
-Ticket ID,Date,Status,Priority,Category,Assigned Agent,Resolution Time (Hours),Source,SLA Status,Satisfaction Rating
-TKT-001,01-01-2024,Closed,High,Technical,John Smith,24,Email,Met,5
-TKT-002,01-01-2024,Resolved,Medium,Billing,Sarah Johnson,12,Phone,Met,4
-TKT-003,02-01-2024,Open,Critical,Technical,Mike Davis,0,Chat,Breached,0
-TKT-004,02-01-2024,Closed,Low,Account,Emily Brown,48,Portal,Met,5
-TKT-005,03-01-2024,In Progress,High,Support,John Smith,18,Email,Met,0
-TKT-006,03-01-2024,Resolved,Medium,Technical,Sarah Johnson,36,Phone,Met,4
-TKT-007,04-01-2024,Closed,Critical,Billing,Mike Davis,6,Chat,Met,5
-TKT-008,04-01-2024,Open,High,Account,Emily Brown,0,Email,Breached,0
-TKT-009,05-01-2024,Resolved,Low,Support,John Smith,72,Portal,Breached,3
-TKT-010,05-01-2024,Closed,Medium,Technical,Sarah Johnson,24,Phone,Met,4
-TKT-011,06-01-2024,In Progress,High,Billing,Mike Davis,12,Email,Met,0
-TKT-012,06-01-2024,Resolved,Critical,Account,Emily Brown,8,Chat,Met,5
-TKT-013,07-01-2024,Closed,Medium,Support,John Smith,30,Portal,Met,4
-TKT-014,07-01-2024,Open,Low,Technical,Sarah Johnson,0,Email,Met,0
-TKT-015,08-01-2024,Resolved,High,Billing,Mike Davis,16,Phone,Met,5
-TKT-016,08-01-2024,Closed,Critical,Account,Emily Brown,10,Chat,Met,5
-TKT-017,09-01-2024,In Progress,Medium,Support,John Smith,20,Email,Met,0
-TKT-018,09-01-2024,Resolved,Low,Technical,Sarah Johnson,48,Portal,Breached,3
-TKT-019,10-01-2024,Closed,High,Billing,Mike Davis,22,Phone,Met,4
-TKT-020,10-01-2024,Open,Critical,Account,Emily Brown,0,Chat,Breached,0
-TKT-021,11-01-2024,Resolved,Medium,Support,John Smith,28,Email,Met,4
-TKT-022,11-01-2024,Closed,Low,Technical,Sarah Johnson,60,Portal,Breached,3
-TKT-023,12-01-2024,In Progress,High,Billing,Mike Davis,14,Phone,Met,0
-TKT-024,12-01-2024,Resolved,Critical,Account,Emily Brown,7,Chat,Met,5
-TKT-025,13-01-2024,Closed,Medium,Support,John Smith,32,Email,Met,4
-TKT-026,13-01-2024,Open,Low,Technical,Sarah Johnson,0,Portal,Met,0
-TKT-027,14-01-2024,Resolved,High,Billing,Mike Davis,18,Phone,Met,5
-TKT-028,14-01-2024,Closed,Critical,Account,Emily Brown,9,Chat,Met,5
-TKT-029,15-01-2024,In Progress,Medium,Support,John Smith,25,Email,Met,0
-TKT-030,15-01-2024,Resolved,Low,Technical,Sarah Johnson,55,Portal,Breached,3
-TKT-031,16-01-2024,Closed,High,Billing,Mike Davis,20,Phone,Met,4
-TKT-032,16-01-2024,Open,Critical,Account,Emily Brown,0,Chat,Breached,0
-TKT-033,17-01-2024,Resolved,Medium,Support,John Smith,26,Email,Met,4
-TKT-034,17-01-2024,Closed,Low,Technical,Sarah Johnson,50,Portal,Met,4
-TKT-035,18-01-2024,In Progress,High,Billing,Mike Davis,15,Phone,Met,0
-TKT-036,18-01-2024,Resolved,Critical,Account,Emily Brown,8,Chat,Met,5
-TKT-037,19-01-2024,Closed,Medium,Support,John Smith,30,Email,Met,4
-TKT-038,19-01-2024,Open,Low,Technical,Sarah Johnson,0,Portal,Met,0
-TKT-039,20-01-2024,Resolved,High,Billing,Mike Davis,17,Phone,Met,5
-TKT-040,20-01-2024,Closed,Critical,Account,Emily Brown,11,Chat,Met,5
-TKT-041,21-01-2024,In Progress,Medium,Support,John Smith,22,Email,Met,0
-TKT-042,21-01-2024,Resolved,Low,Technical,Sarah Johnson,52,Portal,Breached,3
-TKT-043,22-01-2024,Closed,High,Billing,Mike Davis,19,Phone,Met,4
-TKT-044,22-01-2024,Open,Critical,Account,Emily Brown,0,Chat,Breached,0
-TKT-045,23-01-2024,Resolved,Medium,Support,John Smith,27,Email,Met,4
-TKT-046,23-01-2024,Closed,Low,Technical,Sarah Johnson,58,Portal,Breached,3
-TKT-047,24-01-2024,In Progress,High,Billing,Mike Davis,13,Phone,Met,0
-TKT-048,24-01-2024,Resolved,Critical,Account,Emily Brown,9,Chat,Met,5
-TKT-049,25-01-2024,Closed,Medium,Support,John Smith,31,Email,Met,4
-TKT-050,25-01-2024,Open,Low,Technical,Sarah Johnson,0,Portal,Met,0
+Issue Type,Severity,Current Status,Issue Location,Issue Description,Resolver,Resolver Identifier,Reporter,Reporter Identifier,Reporter Designation,Reporter Department,Reporter Division,Reporter Sub Division,Reporter Location,Resolver Designation,Resolver Department,Resolver Division,Resolver Sub Division,Resolver Location,Resolved At,Resolved Remarks,Reported At,Issue ID,Issue Title
+Hardware,Critical,Resolved,Building A - Floor 2,Server crash issue,John Smith,EMP-101,Rajesh Kumar,EMP-501,Manager,IT,Operations,Infrastructure,Mumbai,Sr Engineer,IT,Operations,Support,Mumbai,2024-01-05 14:30,Server restored,2024-01-05 09:15,ISS-001,Server Outage in Building A
+Software,High,Resolved,Building B - Floor 3,Email not working,Priya Sharma,EMP-102,Amit Patel,EMP-502,Executive,Finance,Accounts,AP,Delhi,Engineer,IT,Software,Apps,Delhi,2024-01-06 11:20,Email config fixed,2024-01-06 08:45,ISS-002,Email Service Down
+Network,Critical,Open,Building C - Floor 1,Internet connectivity lost,Vikram Singh,EMP-103,Sneha Gupta,EMP-503,Senior Manager,HR,People,Recruitment,Bangalore,Network Lead,IT,Network,Operations,Bangalore,,Working on issue,2024-01-07 10:00,ISS-003,Network Outage
+Hardware,Medium,In Progress,Building A - Floor 1,Printer not responding,John Smith,EMP-101,Ravi Verma,EMP-504,Officer,Admin,Facilities,Office,Mumbai,Sr Engineer,IT,Operations,Support,Mumbai,,Parts ordered,2024-01-08 13:30,ISS-004,Printer Malfunction
+Software,Low,Resolved,Building D - Floor 2,Application slow,Priya Sharma,EMP-102,Anjali Reddy,EMP-505,Analyst,Finance,Reports,Analytics,Delhi,Engineer,IT,Software,Apps,Delhi,2024-01-09 16:00,Cache cleared,2024-01-09 14:20,ISS-005,Slow Application Performance
+Network,High,Resolved,Building B - Floor 4,WiFi disconnection,Vikram Singh,EMP-103,Karan Mehta,EMP-506,Manager,Sales,Regional,East,Bangalore,Network Lead,IT,Network,Operations,Bangalore,2024-01-10 12:45,Router replaced,2024-01-10 10:30,ISS-006,WiFi Connectivity Issue
+Hardware,Critical,Resolved,Building A - Floor 3,Laptop not booting,John Smith,EMP-101,Pooja Iyer,EMP-507,Executive,Marketing,Digital,Content,Mumbai,Sr Engineer,IT,Operations,Support,Mumbai,2024-01-11 15:30,Hard disk replaced,2024-01-11 09:00,ISS-007,Laptop Boot Failure
+Software,Medium,Closed,Building C - Floor 2,License expired,Priya Sharma,EMP-102,Suresh Nair,EMP-508,Senior Officer,Operations,Logistics,Warehouse,Delhi,Engineer,IT,Software,Apps,Delhi,2024-01-12 11:00,License renewed,2024-01-12 08:30,ISS-008,Software License Issue
+Security,Critical,Resolved,Building D - Floor 1,Unauthorized access attempt,Vikram Singh,EMP-103,Meera Joshi,EMP-509,Manager,Security,Protection,Cyber,Bangalore,Network Lead,IT,Network,Operations,Bangalore,2024-01-13 14:00,Access blocked,2024-01-13 10:15,ISS-009,Security Breach Attempt
+Hardware,Low,Resolved,Building B - Floor 1,Mouse replacement needed,John Smith,EMP-101,Arjun Kapoor,EMP-510,Officer,Admin,Facilities,Office,Mumbai,Sr Engineer,IT,Operations,Support,Mumbai,2024-01-14 16:30,Mouse provided,2024-01-14 15:00,ISS-010,Hardware Replacement
+Network,Medium,In Progress,Building A - Floor 4,Slow internet speed,Vikram Singh,EMP-103,Divya Menon,EMP-511,Analyst,IT,Operations,Network,Mumbai,Network Lead,IT,Network,Operations,Bangalore,,ISP contacted,2024-01-15 11:30,ISS-011,Internet Speed Issue
+Software,High,Resolved,Building C - Floor 3,Database connection error,Priya Sharma,EMP-102,Rohit Saxena,EMP-512,Senior Engineer,IT,Development,Backend,Delhi,Engineer,IT,Software,Apps,Delhi,2024-01-16 17:00,Connection restored,2024-01-16 14:45,ISS-012,Database Error
+Hardware,High,Open,Building D - Floor 4,Monitor display issue,John Smith,EMP-101,Neha Bhatia,EMP-513,Manager,Finance,Treasury,Banking,Bangalore,Sr Engineer,IT,Operations,Support,Mumbai,,Inspecting issue,2024-01-17 09:30,ISS-013,Monitor Problem
+Software,Critical,Resolved,Building A - Floor 2,Critical app crash,Priya Sharma,EMP-102,Sandeep Rao,EMP-514,Senior Manager,Sales,Regional,South,Mumbai,Engineer,IT,Software,Apps,Delhi,2024-01-18 13:15,Bug fixed,2024-01-18 10:45,ISS-014,Application Crash
+Network,Low,Closed,Building B - Floor 2,Phone line static,Vikram Singh,EMP-103,Kavita Pillai,EMP-515,Executive,HR,People,Operations,Delhi,Network Lead,IT,Network,Operations,Bangalore,2024-01-19 15:45,Line repaired,2024-01-19 12:00,ISS-015,Phone Line Issue
+Hardware,Medium,Resolved,Building C - Floor 4,Keyboard malfunction,John Smith,EMP-101,Vinay Kumar,EMP-516,Officer,Admin,Facilities,Maintenance,Bangalore,Sr Engineer,IT,Operations,Support,Mumbai,2024-01-20 14:20,Keyboard replaced,2024-01-20 11:15,ISS-016,Keyboard Issue
+Software,Low,In Progress,Building D - Floor 3,Browser crash,Priya Sharma,EMP-102,Ritu Agarwal,EMP-517,Analyst,Marketing,Research,Insights,Bangalore,Engineer,IT,Software,Apps,Delhi,,Reinstalling,2024-01-21 10:00,ISS-017,Browser Issue
+Security,High,Resolved,Building A - Floor 1,Suspicious email,Vikram Singh,EMP-103,Mohan Das,EMP-518,Senior Officer,Compliance,Audit,Internal,Mumbai,Network Lead,IT,Network,Operations,Bangalore,2024-01-22 12:30,Email blocked,2024-01-22 09:45,ISS-018,Phishing Attempt
+Hardware,High,Resolved,Building B - Floor 3,UPS battery issue,John Smith,EMP-101,Asha Reddy,EMP-519,Manager,Operations,Logistics,Inventory,Delhi,Sr Engineer,IT,Operations,Support,Mumbai,2024-01-23 16:00,Battery replaced,2024-01-23 13:30,ISS-019,UPS Failure
+Software,Medium,Resolved,Building C - Floor 1,Update failed,Priya Sharma,EMP-102,Tarun Mishra,EMP-520,Executive,Finance,Accounts,Payable,Mumbai,Engineer,IT,Software,Apps,Delhi,2024-01-24 11:45,Update completed,2024-01-24 09:00,ISS-020,System Update Failure
+Network,Critical,Resolved,Building D - Floor 2,VPN not connecting,Vikram Singh,EMP-103,Geeta Sharma,EMP-521,Senior Manager,IT,Operations,Remote,Bangalore,Network Lead,IT,Network,Operations,Bangalore,2024-01-25 13:00,VPN restored,2024-01-25 08:15,ISS-021,VPN Connection Issue
+Hardware,Low,Closed,Building A - Floor 3,Headset not working,John Smith,EMP-101,Vivek Singh,EMP-522,Officer,HR,People,Onboarding,Delhi,Sr Engineer,IT,Operations,Support,Mumbai,2024-01-26 15:30,Headset replaced,2024-01-26 14:00,ISS-022,Headset Issue
+Software,High,Open,Building B - Floor 4,Server timeout,Priya Sharma,EMP-102,Ananya Roy,EMP-523,Senior Engineer,IT,Development,Backend,Bangalore,Engineer,IT,Software,Apps,Delhi,,Debugging issue,2024-01-27 10:30,ISS-023,Server Timeout
+Security,Medium,Resolved,Building C - Floor 2,Password reset needed,Vikram Singh,EMP-103,Manish Tiwari,EMP-524,Manager,Sales,Regional,West,Mumbai,Network Lead,IT,Network,Operations,Bangalore,2024-01-28 14:15,Password reset,2024-01-28 12:30,ISS-024,Password Issue
+Hardware,Critical,Resolved,Building D - Floor 1,Power outage,John Smith,EMP-101,Sunita Patel,EMP-525,Senior Officer,Admin,Facilities,Building,Bangalore,Sr Engineer,IT,Operations,Support,Mumbai,2024-01-29 17:30,Power restored,2024-01-29 15:00,ISS-025,Power Failure
+Software,Low,Resolved,Building A - Floor 4,Excel macro error,Priya Sharma,EMP-102,Rahul Bansal,EMP-526,Analyst,Finance,Reports,MIS,Mumbai,Engineer,IT,Software,Apps,Delhi,2024-01-30 11:00,Macro fixed,2024-01-30 09:30,ISS-026,Macro Error
+Network,Medium,In Progress,Building B - Floor 1,DNS issue,Vikram Singh,EMP-103,Pradeep Joshi,EMP-527,Executive,IT,Operations,Network,Delhi,Network Lead,IT,Network,Operations,Bangalore,,Investigating,2024-01-31 13:45,ISS-027,DNS Resolution Issue
+Hardware,High,Resolved,Building C - Floor 3,Hard disk failure,John Smith,EMP-101,Lakshmi Nair,EMP-528,Senior Manager,Operations,Logistics,Distribution,Bangalore,Sr Engineer,IT,Operations,Support,Mumbai,2024-02-01 16:30,Disk replaced and data recovered,2024-02-01 10:00,ISS-028,Hard Disk Failure
+Software,Critical,Resolved,Building D - Floor 4,System hang,Priya Sharma,EMP-102,Sanjay Kumar,EMP-529,Manager,IT,Development,Frontend,Delhi,Engineer,IT,Software,Apps,Delhi,2024-02-02 12:15,System restarted,2024-02-02 09:30,ISS-029,System Hang Issue
+Security,Critical,Open,Building A - Floor 2,Malware detected,Vikram Singh,EMP-103,Deepa Krishnan,EMP-530,Senior Officer,Security,Protection,Cyber,Mumbai,Network Lead,IT,Network,Operations,Bangalore,,Quarantine in progress,2024-02-03 11:00,ISS-030,Malware Detection
+Hardware,Medium,Closed,Building B - Floor 2,Webcam not working,John Smith,EMP-101,Rakesh Yadav,EMP-531,Officer,HR,People,Training,Mumbai,Sr Engineer,IT,Operations,Support,Mumbai,2024-02-04 14:45,Driver updated,2024-02-04 13:00,ISS-031,Webcam Issue
+Software,High,Resolved,Building C - Floor 4,API not responding,Priya Sharma,EMP-102,Nisha Bhatt,EMP-532,Senior Engineer,IT,Development,API,Bangalore,Engineer,IT,Software,Apps,Delhi,2024-02-05 17:00,API restarted,2024-02-05 14:30,ISS-032,API Failure
+Network,Low,Resolved,Building D - Floor 3,Slow file transfer,Vikram Singh,EMP-103,Ajay Mehra,EMP-533,Analyst,Finance,Treasury,Forex,Bangalore,Network Lead,IT,Network,Operations,Bangalore,2024-02-06 13:30,Bandwidth optimized,2024-02-06 11:45,ISS-033,Slow File Transfer
+Hardware,Critical,Resolved,Building A - Floor 1,Server room AC failure,John Smith,EMP-101,Rohan Desai,EMP-534,Manager,Admin,Facilities,Operations,Mumbai,Sr Engineer,IT,Operations,Support,Mumbai,2024-02-07 19:00,AC repaired,2024-02-07 14:00,ISS-034,AC Failure
+Software,Medium,Resolved,Building B - Floor 4,Excel not opening,Priya Sharma,EMP-102,Pallavi Shah,EMP-535,Executive,Marketing,Digital,Social,Delhi,Engineer,IT,Software,Apps,Delhi,2024-02-08 11:30,Office repaired,2024-02-08 09:15,ISS-035,Office Issue
+Security,High,In Progress,Building C - Floor 1,Firewall alert,Vikram Singh,EMP-103,Kunal Shah,EMP-536,Senior Manager,Security,Protection,Network,Mumbai,Network Lead,IT,Network,Operations,Bangalore,,Investigating alert,2024-02-09 10:45,ISS-036,Firewall Alert
+Hardware,Low,Closed,Building D - Floor 2,USB port issue,John Smith,EMP-101,Rashmi Verma,EMP-537,Officer,Operations,Logistics,Customs,Bangalore,Sr Engineer,IT,Operations,Support,Mumbai,2024-02-10 15:00,Port replaced,2024-02-10 13:30,ISS-037,USB Port Issue
+Software,Critical,Resolved,Building A - Floor 3,Critical bug in payroll,Priya Sharma,EMP-102,Hemant Saxena,EMP-538,Senior Officer,Finance,Payroll,Operations,Mumbai,Engineer,IT,Software,Apps,Delhi,2024-02-11 18:00,Bug patched,2024-02-11 12:30,ISS-038,Payroll Bug
+Network,Medium,Resolved,Building B - Floor 3,Shared drive inaccessible,Vikram Singh,EMP-103,Anita Krishnan,EMP-539,Manager,IT,Operations,Storage,Delhi,Network Lead,IT,Network,Operations,Bangalore,2024-02-12 14:30,Permissions restored,2024-02-12 11:00,ISS-039,Shared Drive Issue
+Hardware,High,Open,Building C - Floor 2,Projector not working,John Smith,EMP-101,Bhavna Singh,EMP-540,Executive,HR,People,Events,Bangalore,Sr Engineer,IT,Operations,Support,Mumbai,,Bulb replacement needed,2024-02-13 10:15,ISS-040,Projector Issue
+Software,Low,Resolved,Building D - Floor 4,Word doc corrupted,Priya Sharma,EMP-102,Naveen Iyer,EMP-541,Analyst,Operations,Logistics,Documentation,Mumbai,Engineer,IT,Software,Apps,Delhi,2024-02-14 13:45,Doc recovered,2024-02-14 11:30,ISS-041,Document Corruption
+Security,Medium,Resolved,Building A - Floor 4,2FA not working,Vikram Singh,EMP-103,Shilpa Reddy,EMP-542,Senior Engineer,IT,Security,Identity,Bangalore,Network Lead,IT,Network,Operations,Bangalore,2024-02-15 16:00,2FA reset,2024-02-15 14:15,ISS-042,2FA Issue
+Hardware,Critical,Resolved,Building B - Floor 1,Generator failure,John Smith,EMP-101,Aditya Verma,EMP-543,Senior Manager,Admin,Facilities,Power,Delhi,Sr Engineer,IT,Operations,Support,Mumbai,2024-02-16 20:30,Generator fixed,2024-02-16 17:00,ISS-043,Generator Issue
+Software,High,Resolved,Building C - Floor 4,CRM down,Priya Sharma,EMP-102,Megha Bansal,EMP-544,Manager,Sales,CRM,Operations,Mumbai,Engineer,IT,Software,Apps,Delhi,2024-02-17 12:30,CRM restored,2024-02-17 09:45,ISS-044,CRM System Down
+Network,Critical,In Progress,Building D - Floor 1,Switch failure,Vikram Singh,EMP-103,Pankaj Kumar,EMP-545,Senior Officer,IT,Operations,Hardware,Bangalore,Network Lead,IT,Network,Operations,Bangalore,,Replacement ordered,2024-02-18 11:00,ISS-045,Network Switch Failure
+Hardware,Medium,Closed,Building A - Floor 2,Cable damage,John Smith,EMP-101,Swati Joshi,EMP-546,Officer,Operations,Logistics,Inventory,Mumbai,Sr Engineer,IT,Operations,Support,Mumbai,2024-02-19 15:15,Cable replaced,2024-02-19 13:00,ISS-046,Cable Damage
+Software,Low,Resolved,Building B - Floor 4,PDF not generating,Priya Sharma,EMP-102,Kiran Kumar,EMP-547,Executive,Finance,Reports,Compliance,Delhi,Engineer,IT,Software,Apps,Delhi,2024-02-20 14:00,Plugin updated,2024-02-20 12:30,ISS-047,PDF Generation Issue
+Security,High,Resolved,Building C - Floor 3,Account locked,Vikram Singh,EMP-103,Manju Pandey,EMP-548,Senior Manager,HR,People,Compensation,Bangalore,Network Lead,IT,Network,Operations,Bangalore,2024-02-21 11:45,Account unlocked,2024-02-21 09:30,ISS-048,Account Lockout
+Hardware,Critical,Resolved,Building D - Floor 3,SAN storage failure,John Smith,EMP-101,Ramesh Pillai,EMP-549,Manager,IT,Operations,Storage,Mumbai,Sr Engineer,IT,Operations,Support,Mumbai,2024-02-22 18:30,Storage recovered,2024-02-22 13:00,ISS-049,Storage Failure
+Software,Medium,Open,Building A - Floor 1,Reporting tool slow,Priya Sharma,EMP-102,Sunil Khanna,EMP-550,Analyst,Marketing,Analytics,Reports,Delhi,Engineer,IT,Software,Apps,Delhi,,Optimization in progress,2024-02-23 10:30,ISS-050,Reporting Performance
